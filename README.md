@@ -50,3 +50,40 @@
 <aside>
 💡 필요할 시, 서비스 단에서 if문을 사용해 여러 개의 쿼리(JPQL)를 사용하셔도 좋습니다.
 </aside>
+
+## Level. 2
+
+### **6. JPA Cascade**
+
+<aside>
+🤔 앗❗ 실수로 코드를 지웠어요!
+</aside>
+
+- 할 일을 새로 저장할 시, 할 일을 생성한 유저는 담당자로 자동 등록되어야 합니다.
+- JPA의 `cascade` 기능을 활용해 할 일을 생성한 유저가 담당자로 등록될 수 있게 해주세요.
+
+### **7. N+1**
+
+- `CommentController` 클래스의 `getComments()` API를 호출할 때 N+1 문제가 발생하고 있어요. N+1 문제란, 데이터베이스 쿼리 성능 저하를 일으키는 대표적인 문제 중 하나로, 특히
+  연관된 엔티티를 조회할 때 발생해요.
+- 해당 문제가 발생하지 않도록 코드를 수정해주세요.
+- N+1 로그
+
+### **8. QueryDSL**
+
+TodoService.getTodo 메소드
+
+- JPQL로 작성된 `findByIdWithUser` 를 QueryDSL로 변경합니다.
+- 7번과 마찬가지로 N+1 문제가 발생하지 않도록 유의해 주세요!
+
+### **9. Spring Security**
+
+<aside>
+⚙️Spring Security를 도입하기로 결정했어요!
+
+</aside>
+
+- 기존 `Filter`와 `Argument Resolver`를 사용하던 코드들을 Spring Security로 변경해주세요.
+    - 접근 권한 및 유저 권한 기능은 그대로 유지해주세요.
+    - 권한은 Spring Security의 기능을 사용해주세요.
+- 토큰 기반 인증 방식은 유지할 거예요. JWT는 그대로 사용해주세요.
