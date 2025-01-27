@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -39,6 +41,14 @@ public class UserService {
         }
 
         user.changePassword(passwordEncoder.encode(userChangePasswordRequest.getNewPassword()));
+    }
+
+    public List<UserResponse> getUsers(String nickname) {
+        List<User> users = userRepository.findAllByNickname(nickname);
+
+        return users.stream()
+                .map(user -> new UserResponse(user.getId(), user.getEmail()))
+                .toList();
     }
 
     private static void validateNewPassword(UserChangePasswordRequest userChangePasswordRequest) {
